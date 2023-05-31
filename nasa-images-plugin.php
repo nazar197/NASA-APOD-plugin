@@ -32,6 +32,7 @@ function generate_page_content() {
   $nasa_data = get_data_from_nasa();
 
   if ($nasa_data) {
+    $nasa_data = array_slice($nasa_data, 0, 15);
     ob_start();
 ?>
     <table class="table">
