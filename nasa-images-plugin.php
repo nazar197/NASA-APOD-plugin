@@ -7,10 +7,11 @@ Author: Nazar Pidhrushnyi
 Author URI: https://github.com/nazar197
 */
 
+define('DAYS_TO_FETCH', 15);
+
 // Receive data from NASA API
 function get_data_from_nasa() {
   define('NASA_API_KEY', 'YOUR_NASA_API_KEY');
-  define('DAYS_TO_FETCH', 15);
 
   $end_date = date('Y-m-d');
   $start_date = date('Y-m-d', strtotime("-" . DAYS_TO_FETCH . " days"));
@@ -32,7 +33,7 @@ function generate_page_content() {
   $nasa_data = get_data_from_nasa();
 
   if ($nasa_data) {
-    $nasa_data = array_slice($nasa_data, 0, 15);
+    $nasa_data = array_slice($nasa_data, 0, DAYS_TO_FETCH);
     ob_start();
 ?>
     <table class="table">
